@@ -13,6 +13,9 @@ public class Ksiazka {
   public void wypiszInfo() {
     System.out.println(tytul + " - " + autor " (" + liczbaStron + " str.) Dostepna: " + dostepna);
   }
-  public void wypozycz() { dostepna = false; }
-  public void zwroc() { dostepna = true; }
-}
+  public void wypozycz() { 
+      this.dostepna = false; 
+  }
+  public void zwroc() { 
+      this.dostepna = true; 
+  }
