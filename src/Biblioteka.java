@@ -18,5 +18,22 @@ public class Biblioteka {
         for (int i = 0; i < liczbaKsiazek; i++) {
             ksiazki[i].wypiszInfo();
         }
+    public void znajdzKsiazkePoTytule(String tytul) {
+        for (int i - 0; i < liczbaKsiazek; i++) {
+        if (ksiazki[i].getTytul().equals(tytul)) {
+            ksiazki[i].wypiszInfo();
+            return; 
+        }
+    }
+    System.out.println("Nie znaleziono ksiazki o tytule: " + tytul);
+    }
+    public int policzDostepneKsiazki() {
+        int licznik = 0;
+        for (int i = 0; < liczbaKsiazek; i++) {
+            if (ksiazki[i].isDostepna()) { 
+                licznik++;
+            }
+        }
+        return licznik;
     }
 }
