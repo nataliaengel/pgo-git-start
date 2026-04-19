@@ -1,26 +1,27 @@
 public class Main {
     public static void main(String[] args) {
-        ProduktMenu p1 = new ProduktMenu("K-01" , "Expresso" , 9.0, "kawa");
-        ProduktMenu p2 = new ProduktMenu("K-02", "Cappuccino" , 13.5, "kawa");
-        ProduktMenu p3 = new ProduktMenu("D-01" , "Sernik" , 16.0, "deser");
+        BiuroUbezpieczen biuro = new BiuroUbezpieczen("Secure Future");
 
-    KlientKawiarni klient = new KlientKawiarni(100, "Julia", "Mazur" , "j.mazur@mail.pl");
+        Polisa p1 = new Polisa("CAR-101", "Anna Nowak", 900.0, 3, 72000.0, true, true);
+        Polisa p2 = new Polisa("CAR-102", "Piotr Lis", 840.0, 4, 54000.0, false, false);
+        Polisa p3 = new Polisa("CAR-103", "Karolina Maj", 780.0, 2, 46000.0, true, false);
 
-    Zamowienie zamowienie = new Zamowienie(klient);
-        zamowienie.dodajProdukt(p1);
-        zamowienie.dodajProdukt(p2);
-        zamowienie.dodajProdukt(p3);
+        biuro.dodajPolise(p1);
+        biuro.dodajPolise(p2);
+        biuro.dodajPolise(p3);
 
-    System.out.println(klient);
-        System.out.println(zamowienie);
-        System.out.println("Laczna wartosc: " + zamowienie.policzWartosc());
-        System.out.println("Liczba pozycji: " + zamowienie.policzLiczbeProduktow());
-        System.out.println("LiczbaProduktow: " + ProduktMenu.getLiczbaProduktow());
+        biuro.wypiszRaport();
+        System.out.println("Laczna skladka: " + biuro.policzLacznaSkladke());
+        System.out.println("Laczna prognoza odnowien: " + biuro.policzLacznaPrognozeOdnowien());
+        System.out.println("Polisy wysokiego ryzyka: " + biuro.policzPolisyWysokiegoRyzyka());
+        System.out.println("Liczba utworzonych polis: " + Polisa.pobierzLiczbeUtworzonychPolis());
 
-    ProduktMenu kopiaEspresso = new ProduktMenu("K-01" , "Expresso duplikat" , 9.0, "kawa");
-        System.out.println("Czy produkty sa rowne? " + p1.equals(kopiaEspresso));
+        System.out.println(p1.pobierzPodsumowanieRyzyka());
+        System.out.println("Prognoza odnowienia dla p1: " + p1.obliczSkladkeOdnowieniowa());
+        System.out.println(p1.equals(new Polisa("CAR-101", "Inny", 700.0, 1, 30000.0, false, false)));
+        System.out.println(p2);
 
-    zamowienie.oznaczJakoOplacone();
-        System.out.println(zamowienie);
+        Polisa znaleziona = biuro.znajdzPoNumerze("CAR-102");
+        System.out.println("Znaleziono: " + znaleziona);
     }
 }
