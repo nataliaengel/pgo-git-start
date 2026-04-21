@@ -1,27 +1,27 @@
 public class Main {
     public static void main(String[] args) {
-        BiuroUbezpieczen biuro = new BiuroUbezpieczen("Secure Future");
+        ZespolProjektowy zespol = new ZespolProjektowy("Campus App");
 
-        Polisa p1 = new Polisa("CAR-101", "Anna Nowak", 900.0, 3, 72000.0, true, true);
-        Polisa p2 = new Polisa("CAR-102", "Piotr Lis", 840.0, 4, 54000.0, false, false);
-        Polisa p3 = new Polisa("CAR-103", "Karolina Maj", 780.0, 2, 46000.0, true, false);
+        Pracownik p1 = new Programista("E-101", "Anna", "Maj", 12000.0, "Java", 4);
+        Pracownik p2 = new Tester("E-201", "Piotr", "Lis", 9800.0, true, 25);
+        Pracownik p3 = new Programista("E-102", "Karol", "Wojcik", 11500.0, "Kotlin", 3);
 
-        biuro.dodajPolise(p1);
-        biuro.dodajPolise(p2);
-        biuro.dodajPolise(p3);
+        zespol.dodajPracownika(p1);
+        zespol.dodajPracownika(p2);
+        zespol.dodajPracownika(p3);
 
-        biuro.wypiszRaport();
-        System.out.println("Laczna skladka: " + biuro.policzLacznaSkladke());
-        System.out.println("Laczna prognoza odnowien: " + biuro.policzLacznaPrognozeOdnowien());
-        System.out.println("Polisy wysokiego ryzyka: " + biuro.policzPolisyWysokiegoRyzyka());
-        System.out.println("Liczba utworzonych polis: " + Polisa.pobierzLiczbeUtworzonychPolis());
+        zespol.wypiszSkladZespolu();
+        System.out.println("Laczny koszt zespolu: " + zespol.policzLacznyKoszt());
 
-        System.out.println(p1.pobierzPodsumowanieRyzyka());
-        System.out.println("Prognoza odnowienia dla p1: " + p1.obliczSkladkeOdnowieniowa());
-        System.out.println(p1.equals(new Polisa("CAR-101", "Inny", 700.0, 1, 30000.0, false, false)));
+        System.out.println(p1.przedstawSie());
+        System.out.println(p2.przedstawSie());
+
+        if (p1 instanceof Programista) {
+            Programista programista = (Programista) p1;
+            programista.wypiszTechnologie();
+        }
+
+        System.out.println(p2.equals(new Tester("E-201", "Inne", "Dane", 9000.0, false, 10)));
         System.out.println(p2);
-
-        Polisa znaleziona = biuro.znajdzPoNumerze("CAR-102");
-        System.out.println("Znaleziono: " + znaleziona);
     }
 }
