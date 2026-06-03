@@ -1,27 +1,17 @@
 public class Main {
-    public static void main(String[] args) {
-        Ksiazka k1 = new Ksiazka("Wiedzmin", "Sapkowski", 300, true);
-        Ksiazka k2 = new Ksiazka("Hobbit", "Tolkien", 250, true);
-        
-        Biblioteka biblioteka = new Biblioteka(10);
-        biblioteka.dodajKsiazke(k1);
-        biblioteka.dodajKsiazke(k2);
-        
-        System.out.println("Zasoby biblioteki:");
-        biblioteka.wypiszDostepneKsiazki();
-
-        System.out.println("\n-- Test Czytelnika i wypozyczenia ---");
-        Czytelnik c1 = new Czytelnik("Natalia" , "Engel" , 12345);
-
-        k1.wypozycz(); 
-        c1.zwiekszLiczbeWypozyczonych();
-
-        c1.wypiszDane();
-
-        System.out.println("\n--- Test wyszukiwania ---");
-        biblioteka.znajdzKsiazkePoTytule("Wiedzmin"); 
-
-        int dostepne = biblioteka.policzDostepneKsiazki();
-        System.out.println("Liczba aktualnie dostepnych ksiazek: " + dostepne);
-    }
+   public static void main(String[] args) {
+       ShipmentOrder[] orders = new ShipmentOrder[] {
+               new DomesticCourierShipment("DOM-100", "Anna Kowalska", 120, 35.0, true, 8.5, false),
+               new DomesticCourierShipment("DOM-101", "Piotr Nowak", 420, 40.0, false, 14.0, true),
+               new PickupPointShipment("PCK-200", "Marta Zielinska", 55, 22.0, false, "M", true),
+               new PickupPointShipment("PCK-201", "Jan Malinowski", 30, 19.0, true, "S", false),
+               new InternationalShipment("INT-300", "TechNova Sp. z o.o.", 1350, 110.0, true, "Germany", true, false),
+               new InternationalShipment("INT-301", "SoftLine S.A.", 2100, 140.0, false, "Spain", true, true)
+       };
+       for (ShipmentOrder order : orders) {
+           order.processOrder();
+           System.out.println(order.buildSummaryLine());
+           System.out.println();
+       }
+   }
 }
