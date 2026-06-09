@@ -1,4 +1,4 @@
-public class Student {
+public class StudentModel {
   private String id;
   private String fullName;
   private String groupName;
